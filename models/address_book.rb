@@ -19,7 +19,7 @@ class AddressBook
    	end
 
    	def remove_entry(name, phone, email)
-   		@entries.delete_if{|entry| entry.assoc(name)}
+   		@entries.delete_if{|entry| entry.name == name}
    	end
 
 end
