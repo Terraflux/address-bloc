@@ -71,9 +71,9 @@ class MenuController
   def entry_by_index
     puts "Enter an entry number: "
     selection = gets.chomp.to_i
-    book.entries.each_index do |x|
+    @address_book.entries.each_index do |x|
       if (selection - 1) == x 
-        puts "#{book.entries[selection - 1]}"
+        puts "#{@address_book.entries[selection - 1]}"
       else
         puts "#{selection} is invalid input"
         entry_by_index
