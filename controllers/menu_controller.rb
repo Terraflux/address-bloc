@@ -10,8 +10,9 @@ class MenuController
     puts "1 - View all entries"
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
-    puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "4 - View entry by number"
+    puts "5 - Import entries from a CSV"
+    puts "6 - Exit"
     print "Enter your selection: "
     selection = gets.to_i
     case selection
@@ -29,9 +30,13 @@ class MenuController
         main_menu
       when 4
         system "clear"
-        read_csv
+        entry_by_index
         main_menu
       when 5
+        system "clear"
+        read_csv
+        main_menu
+      when 6
         puts "Good-bye!"
         exit(0)
       else
@@ -63,6 +68,18 @@ class MenuController
   end
   def search_entries
   end
+  def entry_by_index
+    puts "Enter an entry number: "
+    selection = gets.chomp.to_i
+    book.entries.each_index do |x|
+      if (selection - 1) == x 
+        puts "#{book.entries[selection - 1]}"
+      else
+        puts "#{selection} is invalid input"
+        entry_by_index
+      end
+    end
+  end
   def read_csv
   end
   def entry_submenu(entry)
@@ -81,7 +98,7 @@ class MenuController
     else
       system "clear"
       puts "#{selection} is invalid input"
-      entries_submenu(entry)
+      entry_submenu(entry)
     end
   end
 end
