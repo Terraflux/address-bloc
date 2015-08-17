@@ -43,6 +43,17 @@ class MenuController
       when 6
         system "clear"
         puts "Are you sure? Y/N"
+        confirm = gets.chomp
+        case confirm
+        when "Y"
+          obliterate_entries
+        when "N"
+          system "clear"
+          main menu
+        else
+          system "clear"
+          main_menu
+
       when 7
         puts "Good-bye!"
         exit(0)
@@ -111,7 +122,7 @@ class MenuController
   end
 
   def obliterate_entries
-    entries.each do
+    entries.each do |entry|
       entry.delete
     end
   end
