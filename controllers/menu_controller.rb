@@ -47,13 +47,14 @@ class MenuController
         case confirm
         when "Y"
           obliterate_entries
+          main_menu
         when "N"
           system "clear"
           main menu
         else
           system "clear"
           main_menu
-
+        end
       when 7
         puts "Good-bye!"
         exit(0)
@@ -122,9 +123,7 @@ class MenuController
   end
 
   def obliterate_entries
-    entries.each do |entry|
-      entry.delete
-    end
+    address_book.entries = []
   end
 
   def entry_by_index
